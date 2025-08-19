@@ -12,14 +12,18 @@ public class CleanExtract {
             int firstDot = part.indexOf('.');
             int lastDot = part.lastIndexOf('.');
 
+            String extracted;
             if (firstDot != -1 && lastDot != -1 && lastDot > firstDot) {
-                String extracted = part.substring(firstDot + 1, lastDot).trim();
-                if (!extracted.isEmpty()) {
-                    if (result.length() > 0) {
-                        result.append(" ");
-                    }
-                    result.append(extracted);
+                extracted = part.substring(firstDot + 1, lastDot).trim();
+            } else {
+                extracted = part;
+            }
+
+            if (!extracted.isEmpty()) {
+                if (result.length() > 0) {
+                    result.append(" ");
                 }
+                result.append(extracted);
             }
         }
 
