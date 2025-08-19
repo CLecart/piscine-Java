@@ -6,16 +6,14 @@ public class CleanExtract {
 
         String[] parts = s.split("\\|");
         StringBuilder result = new StringBuilder();
-        
+
         for (String part : parts) {
             part = part.trim();
-
             int firstDot = part.indexOf('.');
             int lastDot = part.lastIndexOf('.');
 
             if (firstDot != -1 && lastDot != -1 && lastDot > firstDot) {
                 String extracted = part.substring(firstDot + 1, lastDot).trim();
-
                 if (!extracted.isEmpty()) {
                     if (result.length() > 0) {
                         result.append(" ");
@@ -23,6 +21,10 @@ public class CleanExtract {
                     result.append(extracted);
                 }
             }
+        }
+
+        if (result.length() == 0) {
+            return s.replace("|", " ").replaceAll("\\s+", " ").trim();
         }
 
         return result.toString();
