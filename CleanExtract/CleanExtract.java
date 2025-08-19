@@ -1,6 +1,6 @@
 public class CleanExtract {
     public static String extract(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.trim().isEmpty()) {
             return "";
         }
 
@@ -12,7 +12,7 @@ public class CleanExtract {
             int firstDot = part.indexOf('.');
             int lastDot = part.lastIndexOf('.');
 
-            // Vérifier qu'il y a au moins un caractère entre les points
+            // On garde seulement les segments avec contenu entre deux points
             if (firstDot != -1 && lastDot != -1 && lastDot > firstDot + 1) {
                 String extracted = part.substring(firstDot + 1, lastDot).trim();
                 if (!extracted.isEmpty()) {
@@ -24,7 +24,7 @@ public class CleanExtract {
             }
         }
 
-        // Si aucun extrait trouvé
+        // Si aucun extrait trouvé → on nettoie toute la phrase
         if (result.length() == 0) {
             String cleaned = s.replace("|", " ").replaceAll("\\s+", " ").trim();
             cleaned = cleaned.replaceAll("^\\.+", "").replaceAll("\\.+$", "").trim();
