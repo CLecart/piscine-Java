@@ -6,6 +6,7 @@ public class CleanExtract {
 
         String[] parts = s.split("\\|");
         StringBuilder result = new StringBuilder();
+        boolean hasExtracted = false;
 
         for (String part : parts) {
             part = part.trim();
@@ -19,10 +20,11 @@ public class CleanExtract {
                         result.append(" ");
                     }
                     result.append(extracted);
+                    hasExtracted = true;
                 }
             }
         }
 
-        return result.toString();
+        return hasExtracted ? result.toString() : s.trim();
     }
 }
