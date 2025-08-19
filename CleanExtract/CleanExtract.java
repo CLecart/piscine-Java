@@ -16,7 +16,7 @@ public class CleanExtract {
             if (firstDot != -1 && lastDot != -1 && lastDot > firstDot) {
                 extracted = part.substring(firstDot + 1, lastDot).trim();
             } else {
-                // Supprime les points au début et à la fin
+
                 extracted = part.replaceAll("^\\.+|\\.+$", "").trim();
             }
 
