@@ -23,8 +23,12 @@ public class CleanExtract {
             }
         }
 
+        // Si aucun extrait trouvé, on renvoie la phrase nettoyée
         if (result.length() == 0) {
-            return s.replace("|", " ").replaceAll("\\s+", " ").trim();
+            String cleaned = s.replace("|", " ").replaceAll("\\s+", " ").trim();
+            // Supprimer un point s'il est seul en début ou fin
+            cleaned = cleaned.replaceAll("^\\.+", "").replaceAll("\\.+$", "").trim();
+            return cleaned;
         }
 
         return result.toString();
