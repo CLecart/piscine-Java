@@ -12,7 +12,8 @@ public class CleanExtract {
             int firstDot = part.indexOf('.');
             int lastDot = part.lastIndexOf('.');
 
-            if (firstDot != -1 && lastDot != -1 && lastDot > firstDot) {
+            // Vérifier qu'il y a au moins un caractère entre les points
+            if (firstDot != -1 && lastDot != -1 && lastDot > firstDot + 1) {
                 String extracted = part.substring(firstDot + 1, lastDot).trim();
                 if (!extracted.isEmpty()) {
                     if (result.length() > 0) {
@@ -22,10 +23,10 @@ public class CleanExtract {
                 }
             }
         }
-        
+
+        // Si aucun extrait trouvé
         if (result.length() == 0) {
             String cleaned = s.replace("|", " ").replaceAll("\\s+", " ").trim();
-
             cleaned = cleaned.replaceAll("^\\.+", "").replaceAll("\\.+$", "").trim();
             return cleaned;
         }
