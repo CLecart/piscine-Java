@@ -3,6 +3,8 @@ public class Palindrome {
         if (s == null || s.isEmpty()) {
             return true;
         }
+        
+        s = s.toLowerCase();
 
         int left = 0;
         int right = s.length() - 1;
