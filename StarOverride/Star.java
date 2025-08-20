@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Star extends CelestialObject {
     private double magnitude;
 
@@ -20,6 +22,11 @@ public class Star extends CelestialObject {
     }
 
     @Override
+    public String toString() {
+        return String.format("%s shines at the %.3f magnitude", getName(), getMagnitude());
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
@@ -27,25 +34,12 @@ public class Star extends CelestialObject {
         return Double.compare(x, other.x) == 0 &&
                 Double.compare(y, other.y) == 0 &&
                 Double.compare(z, other.z) == 0 &&
-                name.equals(other.name) &&
-                Double.compare(magnitude, other.magnitude) == 0;
+                Double.compare(magnitude, other.magnitude) == 0 &&
+                (name != null ? name.equals(other.name) : other.name == null);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        long temp;
-        temp = Double.doubleToLongBits(x);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(y);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(z);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s shines at the %.3f magnitude", getName(), magnitude);
+        return Objects.hash(super.hashCode(), magnitude);
     }
 }
