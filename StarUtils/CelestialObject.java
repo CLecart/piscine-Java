@@ -3,8 +3,7 @@ public class CelestialObject {
     public double y;
     public double z;
     public String name;
-    public static final double KM_IN_ONE_AU = 150000000;
-    }
+    public static final double KM_IN_ONE_AU = 150_000_000.0;
 
     public CelestialObject() {
         this.x = 0.0;
@@ -18,7 +17,6 @@ public class CelestialObject {
         this.y = y;
         this.z = z;
         this.name = name;
-
     }
 
     public double getX() {
@@ -65,25 +63,25 @@ public class CelestialObject {
         return distance * KM_IN_ONE_AU;
     }
 
-    public string toString() {
-        return "CelestialObject{" +
-                "name='" + "is positioned at" + '\'' +
-                ", x=" + x +
-                ", y=" + y +
-                ", z=" + z +
-                '}';
+    @Override
+    public String toString() {
+        return String.format("%s is positioned at (%.3f, %.3f, %.3f)", name, x, y, z);
     }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (!(obj instanceof CelestialObject)) return false;
+        if (obj == null || getClass() != obj.getClass()) return false;
         CelestialObject other = (CelestialObject) obj;
-        return Double.compare(other.x, x) == 0 &&
-               Double.compare(other.y, y) == 0 &&
-               Double.compare(other.z, z) == 0 &&
-               name.equals(other.name);
+        return Double.compare(x, other.x) == 0 &&
+                Double.compare(y, other.y) == 0 &&
+                Double.compare(z, other.z) == 0 &&
+                name.equals(other.name);
     }
+
+    @Override
     public int hashCode() {
-        int result = 17;
+        int result = name.hashCode();
         long temp;
         temp = Double.doubleToLongBits(x);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
@@ -91,7 +89,6 @@ public class CelestialObject {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(z);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + name.hashCode();
         return result;
     }
 }
