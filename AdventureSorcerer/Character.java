@@ -27,6 +27,10 @@ public class Character {
         return currentHealth;
     }
 
+    public void setcurrentHealth(int health) {
+        this.currentHealth = health;
+    }
+
     @Override
     public String toString() {
         if (currentHealth == 0) {
