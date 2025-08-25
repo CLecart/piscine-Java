@@ -6,8 +6,8 @@ public class Monster extends Character {
     @Override
     public String toString() {
         if (getCurrentHealth() == 0) {
-            return getName() + " : is a monster and is dead";
+            return getName() + " is a monster and is dead";
         }
-        return getName() + " : is a monster with " + getMaxHealth() + "HP";
+        return getName() + " is a monster with " + getMaxHealth() + " HP";
     }
 }
