@@ -27,7 +27,7 @@ public class Character {
         return currentHealth;
     }
 
-    public void setcurrentHealth(int health) {
+    public void setCurrentHealth(int health) {
         this.currentHealth = health;
     }
 
