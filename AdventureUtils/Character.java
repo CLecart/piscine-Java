@@ -50,11 +50,11 @@ public class Character {
         StringBuilder sb = new StringBuilder();
         sb.append("------------------------------------------\n");
         if (allCharacters.isEmpty()) {
-            sb.append("Nobody's fighting right now !\n");
+            sb.append("Nobody's fighting right now!\n");
         } else {
-            sb.append("Characters currently fighting : \n");
+            sb.append("Characters currently fighting:\n");
             for (Character c : allCharacters) {
-                sb.append(" - ").append(c.toString()).append("\n");
+                sb.append("- ").append(c.toString()).append("\n");
             }
         }
         sb.append("------------------------------------------\n");
