@@ -91,8 +91,4 @@ public class CelestialObject {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(x, y, z, name);
-//    }
 }
