@@ -18,7 +18,7 @@ public class Sorcerer extends Character implements Healer {
             healed = target.getMaxHealth();
         }
 
-        target.getCurrentHealth = healed;
+        target.getCurrentHealth() = healed;
     }
 
     @Override
