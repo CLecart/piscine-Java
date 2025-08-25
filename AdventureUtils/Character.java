@@ -47,18 +47,19 @@ public class Character {
     }
 
     public static String printStatus() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("------------------------------------------\n");
+        String border = "------------------------------------------";
         if (allCharacters.isEmpty()) {
-            sb.append("Nobody's fighting right now !\n");
+            return border + "\nNobody's fighting right now !\n" + border + "\n";
         } else {
-            sb.append("Characters currently fighting : \n");
-            for (Character c : allCharacters) {
-                sb.append(" - ").append(c.toString()).append("\n");
+            StringBuilder sb = new StringBuilder();
+            sb.append(border).append("\n");
+            sb.append("Characters currently fighting :\n");
+            for (Character character : allCharacters) {
+                sb.append(" - ").append(character.toString()).append("\n");
             }
+            sb.append(border).append("\n");
+            return sb.toString();
         }
-        sb.append("------------------------------------------\n");
-        return sb.toString();
     }
 
     public static Character fight(Character c1, Character c2) {
