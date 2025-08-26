@@ -1,8 +1,8 @@
 
 
 public class Weapon {
-    private String name;
-    private int damage;
+    private final String name;
+    private final int damage;
     private Weapon weapon;
 
     public Weapon(String name, int damage) {
