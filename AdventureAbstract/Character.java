@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Character {
+public abstract class Character {
     private final String name;
     private final int maxHealth;
     private int currentHealth;
@@ -39,10 +39,10 @@ public class Character {
         return name + " : " + currentHealth + "/" + maxHealth;
     }
 
-    public abstract takeDamage(int amount);
+    public abstract void takeDamage(int amount);
 
 
-    public abstract attack(Character target);
+    public abstract void attack(Character target);
 
     public static String printStatus() {
         String border = "------------------------------------------";

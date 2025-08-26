@@ -4,9 +4,12 @@ public class Monster extends Character {
     }
 
     public void takeDamage(int amount) {
-        currentHealth -= 0.8 * amount;
-        if (currentHealth < 0) {
-            currentHealth = 0;
+        int damageTaken = (int) (amount * 0.8);
+
+        if (getCurrentHealth() - damageTaken < 0) {
+            setCurrentHealth(0);
+        } else {
+            setCurrentHealth(getCurrentHealth() - damageTaken);
         }
     }
 

@@ -23,9 +23,12 @@ public class Sorcerer extends Character implements Healer {
     }
 
     public void takeDamage(int amount) {
-        currentHealth -= amount;
-        if (currentHealth < 0) {
-            currentHealth = 0;
+        int damageTaken = (int) (amount);
+
+        if (getCurrentHealth() - damageTaken < 0) {
+            setCurrentHealth(0);
+        } else {
+            setCurrentHealth(getCurrentHealth() - damageTaken);
         }
     }
 
