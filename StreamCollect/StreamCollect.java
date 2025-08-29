@@ -24,10 +24,10 @@ public class StreamCollect {
     }
 
     public static String orderAndConcatWithSharp(Stream<String> s) {
-        if (s == null) return "##{}";
+        if (s == null) return "{}";
         String joined = s.filter(Objects::nonNull)
                 .sorted()
                 .collect(Collectors.joining(" # "));
-        return "##{" + joined + "}";
+        return "{" + joined + "}";
     }
 }
