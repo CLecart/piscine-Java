@@ -8,7 +8,7 @@ public class FormatDate {
 
     public static String formatToFullText(LocalDateTime dateTime) {
         if (dateTime == null) return null;
-        DateTimeFormatter dayMonth = DateTimeFormatter.ofPattern("d MMMM", Locale.FRENCH);
+        DateTimeFormatter dayMonth = DateTimeFormatter.ofPattern("d MMM", Locale.FRENCH);
         DateTimeFormatter timeFmt = DateTimeFormatter.ofPattern("H'h'mm'm' 'et' ss's'", Locale.FRENCH);
         String dm = dateTime.format(dayMonth);
         String time = dateTime.format(timeFmt);
