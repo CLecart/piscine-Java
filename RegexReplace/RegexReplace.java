@@ -2,7 +2,7 @@
 public class RegexReplace {
     public static String removeUnits(String s) {
         if (s == null) return null;
-        return s.replaceAll("\\s*(cm|€)\\b", "");
+        return s.replaceAll("(?<=\\d)(?:cm|€)(?= )", "");
     }
 
     public static String obfuscateEmail(String s) {
