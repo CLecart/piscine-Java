@@ -26,5 +26,4 @@ public class DifferenceBetweenDate {
         Duration d = Duration.between(dateTime1, dateTime2);
         return Math.abs(d.toHours());
     }
-
 }
