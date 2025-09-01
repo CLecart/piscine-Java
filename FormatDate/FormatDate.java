@@ -23,7 +23,7 @@ public class FormatDate {
 
     public static String formatIso(LocalTime time) {
         if (time == null) return null;
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("HH:mm:ss.");
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("HH:mm:ss");
         return time.format(f);
     }
 
