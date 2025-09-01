@@ -17,7 +17,7 @@ public class FormatDate {
 
     public static String formatSimple(LocalDate date) {
         if (date == null) return null;
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("MMMM d yy", Locale.ITALIAN);
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("MMM d yy", Locale.ITALIAN);
         return date.format(f);
     }
 
