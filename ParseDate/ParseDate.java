@@ -1,6 +1,8 @@
+// java
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Arrays;
 
 public class ParseDate {
 
@@ -86,41 +88,56 @@ public class ParseDate {
         if (stringDate == null || stringDate.isEmpty()) {
             return null;
         }
-        String[] parts = stringDate.split(", ");
-        if (parts.length != 3) {
+
+        // Split hours from the rest (hours part is before the first comma)
+        String[] parts = stringDate.split(",\\s*", 2);
+        if (parts.length < 1) {
             return null;
         }
 
         String hoursPart = parts[0].trim();
-        String minutesPart = parts[1].trim();
-        String secondsPart = parts[2].trim();
+        String rest = parts.length == 2 ? parts[1].trim() : "";
 
         int hours;
         int minutes;
         int seconds;
 
         try {
-            String[] hoursSplit = hoursPart.split(" ");
+            // hoursPart expected like "09 heures du soir"
+            String[] hoursSplit = hoursPart.split(" ", 3);
             if (hoursSplit.length != 3 || !hoursSplit[1].equals("heures")) {
                 return null;
             }
             hours = Integer.parseInt(hoursSplit[0]);
-            if (hoursSplit[2].equals("du soir")) {
-                if (hours < 12) {
-                    hours += 12;
-                }
-            } else if (!hoursSplit[2].equals("du matin")) {
+
+            String suffix = hoursSplit[2].trim();
+            if (suffix.equals("du soir")) {
+                if (hours < 12) hours += 12;
+            } else if (suffix.equals("du matin")) {
+                if (hours == 12) hours = 0;
+            } else {
                 return null;
             }
 
+            // rest expected like "07 minutes et 23 secondes" or "07 minutes, 23 secondes"
+            // normalize " et " to ", " then split
+            String normalized = rest.replaceAll("\\s+et\\s+", ", ");
+            String[] msParts = normalized.split(",\\s*");
+            if (msParts.length != 2) {
+                return null;
+            }
+
+            String minutesPart = msParts[0].trim();
+            String secondsPart = msParts[1].trim();
+
             String[] minutesSplit = minutesPart.split(" ");
-            if (minutesSplit.length != 3 || !minutesSplit[1].equals("minutes")) {
+            if (minutesSplit.length < 2 || !minutesSplit[1].startsWith("minute")) {
                 return null;
             }
             minutes = Integer.parseInt(minutesSplit[0]);
 
             String[] secondsSplit = secondsPart.split(" ");
-            if (secondsSplit.length != 3 || !secondsSplit[1].equals("secondes")) {
+            if (secondsSplit.length < 2 || !secondsSplit[1].startsWith("second")) {
                 return null;
             }
             seconds = Integer.parseInt(secondsSplit[0]);
