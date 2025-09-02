@@ -1,14 +1,4 @@
-classDiagram
-class Excalibur{
-    -String name
-    -Excalibur INSTANCE$
-    -Excalibur(String name)
-    +getName() String
-    +getInstance()$ Excalibur
-}
-Excalibur <-- Excalibur
-
-public class Excalibur {
+public static class Excalibur {
     private String name;
     private static Excalibur INSTANCE;
     private Excalibur(String name);
