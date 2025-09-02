@@ -1,20 +1,17 @@
+```java
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValuePublisher {
-    private final List<NumericBaseObserver> observers = new ArrayList<>();
+public class BinaryBaseObserver implements NumericBaseObserver {
+    private final List<String> events = new ArrayList<>();
 
-    public void updateState(int value) {
-        for (NumericBaseObserver o : observers) {
-            o.updateState(value);
-        }
+    @Override
+    public void updateState(int state) {
+        events.add(Integer.toBinaryString(state));
     }
 
-    public void subscribe(NumericBaseObserver observer) {
-        observers.add(observer);
-    }
-
-    public void unsubscribe(NumericBaseObserver observer) {
-        observers.remove(observer);
+    @Override
+    public List<String> getEvents() {
+        return events;
     }
 }
