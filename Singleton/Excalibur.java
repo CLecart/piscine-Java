@@ -1,4 +1,4 @@
-public static class Excalibur {
+public class Excalibur {
     private String name;
     private static Excalibur INSTANCE;
     private Excalibur(String name);
