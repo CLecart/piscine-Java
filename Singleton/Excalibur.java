@@ -9,9 +9,9 @@ public class Excalibur {
     public String getName() {
         return name;
     }
-    public static Sword getInstance() {
+    public static Excalibur getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new Excalibur("Excalibur");
+            INSTANCE = new Excalibur("Sword");
         }
         return INSTANCE;
     }
