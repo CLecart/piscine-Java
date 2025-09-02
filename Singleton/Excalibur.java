@@ -9,7 +9,7 @@ public class Excalibur {
     public String getName() {
         return name;
     }
-    public static Excalibur getInstance() {
+    public static Sword getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new Excalibur("Excalibur");
         }
