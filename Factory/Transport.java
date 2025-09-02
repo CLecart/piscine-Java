@@ -1,3 +1,3 @@
-cpublic interface Transport {
+public interface Transport {
     int getDistance();
 }
